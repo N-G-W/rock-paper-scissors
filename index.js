@@ -12,7 +12,7 @@ function getComputerChoice() {
     else {
         choice="Paper"
     }
-    return choice
+    return choice.toLowerCase()
 }
 
 function getRandomChoice() {
@@ -28,7 +28,7 @@ function getHumanChoice() {
     else if (humanChoice.toLowerCase() == "paper") {
         return humanChoice
     }
-    else if (humanChoice.toLowerCase() == "scissor" || humanChoice.toLowerCase() == "scissors") {
+    else if ( humanChoice.toLowerCase() == "scissors") {
         return humanChoice
     }
     else {
@@ -36,5 +36,62 @@ function getHumanChoice() {
     }
 }
 
-let play=prompt("Want to play a game of Rock, Paper and Scissors?")
-console.log(getHumanChoice())
+
+
+let play = prompt("Want to play a game of Rock, Paper and Scissors?");
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+
+    switch (humanChoice) {
+        case "rock":
+            if (computerChoice == "paper") {
+                console.log("You lose! Paper beats Rock.")
+                computerScore++
+            }
+            else if(computerChoice == "scissors"){
+                console.log("You Win! Rock beats Scissors.")
+                humanScore++
+            }
+            else {
+                console.log("Its a draw!")
+            }
+            break;
+        case "paper":
+            if ( computerChoice == "scissors") {
+                console.log("You lose! Scissors beats Paper.")
+                computerScore++
+            }
+            else if( computerChoice == "rock") {
+                console.log("You Win! Paper beats Rock.")
+                humanScore++
+            }
+            else {
+                console.log("Its a draw!")
+            }
+            break;
+        case "scissors":
+             if (computerChoice == "rock") {
+                 console.log("You lose! Rock beats Scissors.")
+                 computerScore++
+    }
+             else if (computerChoice == "paper") {
+                 console.log("You Win! Scissors beats Paper.")
+                 humanScore++
+    }
+             else {
+                 console.log("Its a draw!")
+            }
+            break;
+        default:
+            console.log("Uhh Ohh")
+    }
+   
+}
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+console.log(humanSelection,computerSelection)
+playRound(humanSelection, computerSelection);
+console.log(humanScore,computerScore)
