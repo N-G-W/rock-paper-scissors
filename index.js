@@ -40,7 +40,7 @@ function getHumanChoice() {
 
 
 
-function playGame() {
+function playGame(humanChoice) {
     let humanScore = 0;
     let computerScore = 0;
 
@@ -91,13 +91,13 @@ function playGame() {
         }
     
     }
-    let i = 0;
-    while (i < 5) {
-        let humanChoice = getHumanChoice()
-        let computerChoice= getComputerChoice()
-        playRound(humanChoice,computerChoice)
-        ++i;
-    }
+    // let i = 0;
+    // while (i < 5) {
+    // let humanChoice = getHumanChoice()
+    let computerChoice= getComputerChoice()
+    playRound(humanChoice,computerChoice)
+    //     ++i;
+    // }
     if (humanScore > computerScore) {
         console.log("Congratulations! You win!")
     }
@@ -109,4 +109,25 @@ function playGame() {
     }
 }
 
-playGame()
+let body = document.querySelector("body")
+let rockButton = document.createElement("button")
+let scissorsButton = document.createElement("button")
+let paperButton = document.createElement("button")
+
+rockButton.textContent = "Rock"
+scissorsButton.textContent = "Scissors"
+paperButton.textContent = "Paper"
+// body.appendChild(rockButton)
+body.append(rockButton,scissorsButton,paperButton)
+
+rockButton.addEventListener("click", () => {
+    playGame("rock")
+})
+
+scissorsButton.addEventListener("click", () => {
+    playGame("scissors")
+})
+
+paperButton.addEventListener("click", () => {
+    playGame("paper")
+})
